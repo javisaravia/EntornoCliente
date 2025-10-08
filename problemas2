@@ -1,0 +1,70 @@
+
+//declaramos una variable
+
+let valor = 1;
+
+//convertimos a numero 
+let numero= Number(valor);
+
+//convertimos a booleano
+let booleano= Boolean(valor);
+
+//convertimos a texto
+let texto= String(valor);
+
+
+console.log(typeof valor, valor);       // string "1"
+console.log(typeof numero, numero);     // number 1
+console.log(typeof texto, texto);       // string "1"
+console.log(typeof booleano, booleano); // boolean true
+
+
+
+//Crea un script que concatene cadenas y números
+
+const nombre = "Javi";
+const edad = 20;
+const mensaje = "Hola,  me llamo " + nombre + " y tengo " + edad + " años. "
+ 
+ console.log(mensaje);
+
+ //Reproduce el caso práctico 'Variable address' con una variable no declarada. Observa el error y corrígelo.
+ var num = 10
+var street = "sol";
+var city = "Madrid";
+var zip_code = "28080";
+var address = street + " , " + num + " , " + city + "," + zip_code;
+
+console.log(address);
+
+//
+
+
+//Realiza un script que convierta datos de texto a número usando parseInt y parseFloat. Controla el caso de NaN.
+
+let textEntero = "42"
+let textoDecimal = "3.14";
+let textoNumero = "Hola";
+
+let entero = parseInt(textEntero);
+if (isNaN(entero)) {
+    console.log("No es un número válido");
+} else {
+    console.log("Número entero:", entero);
+}
+
+let decimal = parseFloat(textoDecimal);
+if (isNaN(decimal)) {
+    console.log("No es un número válido");
+} else {
+    console.log("Número decimal:", decimal);
+}
+
+let resultado = parseFloat(textoNumero);
+if (isNaN(resultado)) {
+    console.log("No es un número válido");
+} else {
+    console.log("Número:", resultado);
+}
+
+//
