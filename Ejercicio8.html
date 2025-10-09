@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+
+    <p id="miParrafo">Este es el texto original del párrafo</p>
+    <button id="miBoton">Cambiar texto</button>
+
+    <script>
+        const parrafo = document.getElementById("miParrafo");
+        const boton = document.getElementById("miBoton");
+
+        boton.addEventListener("click", function() {
+            parrafo.textContent = "El texto ha sido cambiado";
+            parrafo.style.color = "green";
+            parrafo.style.fontWeight = "bold";
+            parrafo.style.fontSize = "24px";
+        });
+    </script>
+
+</body>
+</html>
+

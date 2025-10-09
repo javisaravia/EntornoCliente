@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capturar teclas</title>
+</head>
+<body>
+
+    <h1>Evento del teclado</h1>
+    <input type="text" id="campoTexto" placeholder="Escribe algo aquí...">
+
+    <script>
+        const campo = document.getElementById("campoTexto");
+        campo.addEventListener("keydown", function(evento) {
+            console.log("Tecla pulsada:", evento.key);
+        });
+    </script>
+
+</body>
+</html>
