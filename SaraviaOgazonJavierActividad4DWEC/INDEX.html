@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Factorial en JavaScript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades de Programación</title>
 </head>
 <body>
-  <h2>Calculadora de Factorial</h2>
-  <script src="Act3.js"></script>
+    <h1>Actividades de Programación</h1>
+
+    <button onclick="cargarScript('Act1.js')">Actividad 1</button>
+    <button onclick="cargarScript('Act2.js')">Actividad 2</button>
+    <button onclick="cargarScript('Act3.js')">Actividad 3</button>
+    <button onclick="cargarScript('Act4.js')">Actividad 4</button>
+    <button onclick="cargarScript('Act5.js')">Actividad 5</button>
+    <button onclick="cargarScript('Act6.js')">Actividad 6</button>
+    <button onclick="cargarScript('Act7.js')">Actividad 7</button>
+    <button onclick="cargarScript('Act8.js')">Actividad 8</button>
+    <button onclick="cargarScript('Act9.js')">Actividad 9</button>
+    <button onclick="cargarScript('Act10.js')">Actividad 10</button>
+
+    <script>
+        function cargarScript(nombreArchivo) {
+            const antiguoScript = document.getElementById('scriptActividad');
+            if (antiguoScript) antiguoScript.remove();
+
+            const nuevoScript = document.createElement('script');
+            nuevoScript.src = nombreArchivo;
+            nuevoScript.id = 'scriptActividad';
+            document.body.appendChild(nuevoScript);
+        }
+    </script>
 </body>
 </html>
