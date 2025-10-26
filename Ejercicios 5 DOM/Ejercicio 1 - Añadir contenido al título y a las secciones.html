@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir contenido al título</title>
+</head>
+<body>
+    <h1 id="titulo">Título: </h1>
+    <h2 id="seccion1">Sección 1:</h2>
+    <h2 id="seccion2">Sección 2: </h2>
+    <hr>
+    <br>
+    <form>
+        <h4>Introduce el título: </h4>
+        <!--Para darle tamaño al textarea se usan cols y rows -->
+        <textarea cols="50" rows="5" id="campoTitulo" placeholder="Título"></textarea>
+        <br>
+        <h4>Introduce la sección 1: </h4>
+        <textarea cols="50" rows="5" id="campoSeccion1" placeholder="Primera sección"></textarea>
+        <br>
+        <h4>Introduce la sección 2: </h4>
+        <textarea cols="50" rows="5" id="campoSeccion2" placeholder="Segunda sección"></textarea>
+        <br><br>
+        <!--Hacemos un botón de tipo reset para que lo que escribamos al enviarlo se borre y podamos seguir.-->
+        <button id="miBoton" type="button" style="width: 200px; height: 80px; background-color: rgba(0, 0, 255, 0.212);" onclick="rellenarInformacion()">Rellenar información</button>
+    </form>
+
+    <script>
+        function rellenarInformacion() {
+            
+            // Obtenemos el texto/valor de cada textarea
+            const valorTitulo = document.getElementById("campoTitulo").value;
+            const valorSeccion1 = document.getElementById("campoSeccion1").value;
+            const valorSeccion2 = document.getElementById("campoSeccion2").value;
+
+            // 3. Seleccionamos los h2 de destino
+            const h2Titulo = document.getElementById("titulo");
+            const h2Seccion1 = document.getElementById("seccion1");
+            const h2Seccion2 = document.getElementById("seccion2");
+
+            // 4. Asignamos el nuevo texto a los h2
+            // Usamos .textContent para cambiar solo el texto
+            h2Titulo.textContent = "Título: " + valorTitulo;
+            h2Seccion1.textContent = "Sección 1: " + valorSeccion1;
+            h2Seccion2.textContent = "Sección 2: " + valorSeccion2;
+        }
+     
+
+    </script>
+</body>
+</html>
