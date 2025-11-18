@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1</title>
+</head>
+<body>
+
+    <h1>Actividad 1</h1>
+
+    <input type="text" id="texto" placeholder="Escribe aquí" />
+    <button id="analizar">Analizar</button>
+    <p id="resultado"></p>
+   <script>
+
+        function analizarArray(texto)
+        {
+            if (texto.length === 0)
+            return "Cadena vacía";
+
+            if (texto === texto.toLowerCase()) 
+            return "Minúsculas";
+
+            if (texto === texto.toUpperCase())
+            return "Mayúsculas";
+            return "Mezcla de ambas";
+        }
+
+        document.getElementById('analizar').addEventListener('click', () => {
+      const cad = document.getElementById('texto').value;
+      document.getElementById('resultado').textContent = analizarArray(cad);
+    });
+
+
+   </script> 
+    
+</body>
+</html>

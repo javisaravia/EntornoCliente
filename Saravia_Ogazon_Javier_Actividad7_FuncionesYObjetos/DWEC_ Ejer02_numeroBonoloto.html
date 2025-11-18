@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Sorteo Bonoloto</h1>
+  <button id="sorteo">Sacar números</button>
+  <p id="resultado"></p>
+
+   <script>
+
+        function sorteoBonoloto(){
+            let numeros = [];
+
+            while (numeros.length < 6)
+        {
+        let n = Math.floor(Math.random() * 49) +1;
+        if (!numeros.includes(n)) numeros.push(n);
+        }
+         numeros.sort((a,b)=>a-b);
+         const complementario = Math.floor(Math.random() * 9) + 1;
+        return { numeros, complementario };
+         }
+
+        document.getElementById('sorteo').addEventListener('click', () => {
+      const { numeros, complementario } = sorteoBonoloto();
+      document.getElementById('resultado').textContent =
+        `Números: ${numeros.join(', ')}  |  Complementario: ${complementario}`;
+    });
+
+   </script> 
+    
+</body>
+</html>
