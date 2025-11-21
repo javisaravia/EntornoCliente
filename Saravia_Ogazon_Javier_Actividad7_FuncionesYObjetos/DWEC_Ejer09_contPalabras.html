@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Actividad 9</title>
 </head>
 <body>
+        <h2>Contador de palabras</h2>
 
+  <textarea id="txt" rows="5" cols="40"></textarea>
+
+  <p>Palabras: <span id="num">0</span></p>
    <script>
+        document.getElementById("txt").addEventListener("input", () => {
+      const texto = document.getElementById("txt").value.trim();
+      const palabras = texto === "" ? 0 : texto.split(/\s+/).length;
 
+      document.getElementById("num").textContent = palabras;
+    });
 
    </script> 
     
