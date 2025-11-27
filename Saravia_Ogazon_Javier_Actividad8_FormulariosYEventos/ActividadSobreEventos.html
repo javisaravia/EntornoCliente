@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividades 6 a 10: Eventos</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .bloque { margin-bottom: 30px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; }
+        h3 { margin-top: 0; }
+        .rojo { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Actividades sobre Eventos</h2>
+
+    <div class="bloque">
+        <h3>6. Evento onChange</h3>
+        <p>Escribe algo y haz clic fuera del campo o presiona Enter:</p>
+        <label>Campo de texto:</label>
+        <input type="text" onchange="alert('El nuevo valor introducido es: ' + this.value)">
+    </div>
+
+    <div class="bloque">
+        <h3>7. Evento onInput (Contador)</h3>
+        <p>Escribe abajo (límite aviso: 200 caracteres):</p>
+        <textarea id="areaTexto" rows="4" cols="50"></textarea>
+        <p>Caracteres actuales: <span id="contador">0</span></p>
+        <p id="avisoLimite" class="rojo" style="display: none;">¡Has superado el límite de 200 caracteres!</p>
+    </div>
+
+    <div class="bloque">
+        <h3>8. Evento onSubmit y 9. Evento onReset</h3>
+        <form id="formEventos">
+            <label>Campo obligatorio (para probar envío):</label><br>
+            <input type="text" id="campoObligatorio"><br><br>
+
+            <label>Otro dato (para probar reset):</label><br>
+            <input type="text"><br><br>
+
+            <button type="submit">Enviar Formulario</button>
+            
+            <button type="reset">Restablecer (Borrar todo)</button>
+        </form>
+    </div>
+
+    <div class="bloque">
+        <h3>10. Eventos onFocus y onBlur</h3>
+        <p>Haz clic dentro de los campos para ver cómo cambian de color:</p>
+        <label>Campo 1:</label>
+        <input type="text" class="campo-foco"><br><br>
+        
+        <label>Campo 2:</label>
+        <input type="text" class="campo-foco"><br><br>
+        
+        <label>Campo 3:</label>
+        <input type="text" class="campo-foco">
+    </div>
+
+    <script>
+        //act7
+        const areaTexto = document.getElementById('areaTexto');
+        const contador = document.getElementById('contador');
+        const aviso = document.getElementById('avisoLimite');
+
+        areaTexto.addEventListener('input', function() {
+            let cantidad = this.value.length;
+            contador.innerText = cantidad; 
+            if (cantidad > 200) {
+                aviso.style.display = 'block';
+            } else {
+                aviso.style.display = 'none';
+            }
+        });
+
+        //act8 y act9
+        const formEventos = document.getElementById('formEventos');
+
+        //act8 
+        formEventos.addEventListener('submit', function(event) {
+            let campo = document.getElementById('campoObligatorio').value;
+            
+            if (campo.trim() === "") {
+                event.preventDefault();
+                alert("Error (Ejercicio 8): No se puede enviar, el campo está vacío.");
+            } else {
+                alert("Formulario enviado correctamente.");
+            }
+        });
+
+        //act9
+        formEventos.addEventListener('reset', function(event) {
+            let confirmacion = confirm("¿Estás seguro de que quieres borrar todos los datos?");
+ 
+            if (!confirmacion) {
+                event.preventDefault();
+            }
+        });
+
+        //act10
+        const inputsFoco = document.querySelectorAll('.campo-foco');
+
+        inputsFoco.forEach(input => {
+           
+            input.addEventListener('focus', function() {
+                this.style.backgroundColor = '#e0f7fa'; 
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.backgroundColor = ''; 
+            });
+        });
+    </script>
+
+</body>
+</html>

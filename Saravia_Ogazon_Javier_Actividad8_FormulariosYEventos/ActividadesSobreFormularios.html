@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividad sobre Formularios</title>
+</head>
+<body>
+    <h2>Formulario de registro</h2>
+    <form id="formulario">
+        <label>Usuario:</label><br>
+        <input type="text" id="usuario" placeholder="Solo letras y números"><br><br>
+
+        <label>Email:</label><br>
+        <input type="text" id="email"><br><br>
+
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre"><br>
+        <label>Apellidos:</label><br>
+        <input type="text" id="apellidos"><br>
+        <label>Teléfono:</label><br>
+        <input type="text" id="telefono"><br><br>
+
+        <label>Contraseña:</label><br>
+        <input type="password" id="password"><br>
+        <label>Confirmar Contraseña:</label><br>
+        <input type="password" id="confirm_password"><br>
+        <input type="checkbox" onclick="mostrarOcultarPass()"> Mostrar contraseñas<br><br>
+
+        <label>Comentario (mín. 50 caracteres):</label><br>
+        <textarea id="comentario" rows="4" cols="50"></textarea><br>
+        <p id="mensajeCaracteres" style="color: red;"></p><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        function mostrarOcultarPass() {
+            var pass = document.getElementById("password");
+            var conf = document.getElementById("confirm_password");
+            
+            // Si el tipo es password, lo cambiamos a text para que se vea
+            if (pass.type === "password") {
+                pass.type = "text";
+                conf.type = "text";
+            } else {
+                pass.type = "password";
+                conf.type = "password";
+            }
+        }
+
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            //act1
+            let email = document.getElementById('email').value;
+            if (!email.includes('@') || !email.includes('.')) { 
+                alert("Error: El formato del correo electrónico no es válido.");
+                return;
+            }
+
+            //act2
+            let nombre = document.getElementById('nombre').value;
+            let apellidos = document.getElementById('apellidos').value;
+            let telefono = document.getElementById('telefono').value;
+
+            if (nombre === "" || apellidos === "" || telefono === "") {
+                alert("Alerta: Todos los campos (Nombre, Apellidos, Teléfono) son obligatorios.");
+                return;
+            }
+
+            //act5
+            let usuario = document.getElementById('usuario').value;
+            let regexUsuario = /^[a-zA-Z0-9]+$/; 
+            
+            if (!regexUsuario.test(usuario)) {
+                alert("El nombre de usuario no es válido (solo letras y números, sin espacios).");
+                return;
+            }
+
+            //act4
+            let comentario = document.getElementById('comentario').value;
+            if (comentario.length < 50) {
+                let faltan = 50 - comentario.length;
+                document.getElementById('mensajeCaracteres').innerText = 
+                    "Faltan " + faltan + " caracteres para llegar al mínimo de 50.";
+                return;
+            } else {
+                document.getElementById('mensajeCaracteres').innerText = "";
+            }
+
+            alert("Formulario enviado");
+        });
+    </script>
+</body>
+</html>
