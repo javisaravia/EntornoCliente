@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+
+    <h3>Ejercicio 4</h3>
+
+<input type="text" id="campo-texto" placeholder="Escribe aquí y pulsa Enter...">
+
+<div id="mensaje-salida" style="display: none; margin-top: 20px; color: green; font-weight: bold;">
+    Has pulsado la tecla enter
+</div>
+    <script>
+
+$(document).ready(function() {
+    // cambiar de color al escribir 
+    $('#campo-texto').on('input', function() {
+
+        $(this).css('background-color', '#fff3cd');
+        $(this).css('color', '#333');
+    });
+
+    // mostrae mensaje al pulsar
+    $('#campo-texto').on('keypress', function(evento) {
+        if (evento.which === 13) {
+            // Mostramos el mensaje con un efecto visual 
+            $('#mensaje-salida').text("¡Acción confirmada con ENTER!").fadeIn();
+            
+            $(this).css('background-color', '#fff');
+        }
+    });
+});
+
+    </script>
+    
+</body>
+</html>

@@ -7,6 +7,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+    <h3>Ejercicio 3</h3>
+<form>
+    <label for="tipo-usuario">Selecciona tu perfil:</label>
+    <select id="tipo-usuario">
+        <option value="estandar">Usuario estándar</option>
+        <option value="avanzado">Usuario avanzado</option>
+    </select>
+
+    <br><br>
+
+    <div id="campos-extra" style="display: none; border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+        <p><strong>Información adicional:</strong></p>
+        <label>Nivel de experiencia:</label>
+        <input type="text">
+        <br><br>
+        <label>Herramientas:</label>
+        <input type="text">
+    </div>
+</form>
     
+    <script>
+        $(document).ready(function() {
+
+    $('#tipo-usuario').change(function() {
+        
+        var seleccion = $(this).val();
+
+        if (seleccion === 'avanzado') 
+        {
+            $('#campos-extra').slideDown(500); 
+        } else 
+        {
+            $('#campos-extra').slideUp(500);
+        }
+    });
+});
+    </script>
+
 </body>
 </html>
