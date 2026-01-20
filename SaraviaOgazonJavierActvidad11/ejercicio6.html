@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Ejercicio 6</h1>
+
+    <div id="contenedor-barra">
+        <div id="barra-progreso">0%</div>
+    </div>
+
+    <button id="btn-avanzar">Avanzar (+10%)</button>
+    <button id="btn-reiniciar">Reiniciar</button>
+    
+    <script>
+
+        $(document).ready(function() {
+    
+            var porcentaje = 0;
+
+            $('#btn-avanzar').click(function() {
+                if (porcentaje < 100) {
+                    porcentaje += 10; 
+
+                    $('#barra-progreso').css('width', porcentaje + '%');
+                    $('#barra-progreso').text(porcentaje + '%');
+                } 
+                
+                if (porcentaje >= 100) {
+                    $('#barra-progreso').text('¡Completado!');
+                }
+            });
+
+            $('#btn-reiniciar').click(function() {
+                porcentaje = 0; 
+                
+                $('#barra-progreso').css('width', '0%');
+                $('#barra-progreso').text('0%');
+            });
+        });
+
+    </script>
+</body>
+</html>

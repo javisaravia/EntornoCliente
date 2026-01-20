@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <h1>Ejercicio 5</h1>
+
+    <div id="botones">
+        <button class="boton" data-categoria="paisaje">Paisaje</button>
+        <button class="boton" data-categoria="ciudad">Ciudades</button>
+        <button class="boton" data-categoria="animal">Animales</button> 
+        <button id="boton4">Ocultar</button>
+    </div>
+
+    <hr>
+
+    <div id="imagenes">
+        <img src="paisaje.jpg" class="imagen paisaje" alt="Paisaje" style="display:none;">
+        <img src="ciudad.jpg" class="imagen ciudad" alt="Ciudad" style="display:none;">
+        <img src="animal.jpeg" class="imagen animal" alt="Animal" style="display:none;">
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+    
+
+            $('.boton').click(function() {
+
+                var categoriaSeleccionada = $(this).data('categoria'); 
+
+                $('.imagen').hide();
+                $('.' + categoriaSeleccionada).fadeIn(1000); 
+            });
+
+            $('#boton4').click(function() {
+                $('.imagen').fadeOut('slow');
+            });
+
+        });
+    </script>
+
+</body>
+</html>

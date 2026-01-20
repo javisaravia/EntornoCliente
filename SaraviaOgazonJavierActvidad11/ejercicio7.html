@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>Ejercicio 7</h1>
+
+    <button id="btn-cargar">Cargar datos del servidor</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-cuerpo">
+        </tbody>
+    </table>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('#btn-cargar').click(function() {
+                // REQUISITO 1: Vaciar la tabla antes de cargar nuevos datos
+                $('#tabla-cuerpo').empty();
+
+                // Cambiamos el texto del botón para dar feedback al usuario
+                $(this).text('Cargando...');
+
+                // REQUISITO 2: Petición Asíncrona (AJAX)
+                // Usamos $.get para pedir datos a una URL externa
+                $.get('https://jsonplaceholder.typicode.com/users', function(datos) {
+                    
+                    // Cuando los datos llegan, recorremos la lista (loop)
+                    // 'datos' es un array con 10 usuarios ficticios
+                    $.each(datos, function(indice, usuario) {
+                        
+                        // Creamos una fila HTML con los datos recibidos
+                        var fila = `<tr>
+                                        <td>${usuario.id}</td>
+                                        <td>${usuario.name}</td>
+                                        <td>${usuario.email}</td>
+                                        <td>${usuario.address.city}</td>
+                                    </tr>`;
+                        
+                        // Añadimos la fila a la tabla
+                        $('#tabla-cuerpo').append(fila);
+                    });
+
+                    // Restauramos el texto del botón
+                    $('#btn-cargar').text('Cargar Datos del Servidor');
+
+                }).fail(function() {
+                    alert("Error al cargar los datos. Revisa tu conexión a internet.");
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
