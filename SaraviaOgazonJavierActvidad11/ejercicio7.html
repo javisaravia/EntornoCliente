@@ -32,16 +32,12 @@
             $('#btn-cargar').click(function() {
                 // REQUISITO 1: Vaciar la tabla antes de cargar nuevos datos
                 $('#tabla-cuerpo').empty();
-
-                // Cambiamos el texto del botón para dar feedback al usuario
+                
                 $(this).text('Cargando...');
 
-                // REQUISITO 2: Petición Asíncrona (AJAX)
-                // Usamos $.get para pedir datos a una URL externa
                 $.get('https://jsonplaceholder.typicode.com/users', function(datos) {
                     
-                    // Cuando los datos llegan, recorremos la lista (loop)
-                    // 'datos' es un array con 10 usuarios ficticios
+                    
                     $.each(datos, function(indice, usuario) {
                         
                         // Creamos una fila HTML con los datos recibidos

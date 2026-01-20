@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Ejercicio 8</h1>
+
+    //botones de control
+    <div id="controles">
+        <button class="btn-contenido" data-target="#bloque1">Bloque 1</button>
+        <button class="btn-contenido" data-target="#bloque2">Bloque 2</button>
+        <button class="btn-contenido" data-target="#bloque3">Bloque 3</button>
+    </div>
+
+    //bloques de contenido
+    <div id="bloque1" style="display:none;">
+       
+        <p>Este es el bloque 1. Contenido visible.</p>
+        
+    </div>
+      
+    <div id="bloque2" style="display:none;">
+       
+        <p>Este es el bloque 2. Contenido oculto.</p>
+    </div>
+
+    <div id="bloque3" style="display:none;">
+       
+        <p>Este es el bloque 3. Contenido visible.</p>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            
+           
+            $('#bloque1').fadeIn();
+
+            $('.btn-contenido').click(function() {
+               
+                var objetivo = $(this).data('target');
+
+                $('.bloque-texto').hide();
+ 
+                $(objetivo).fadeIn(1000); 
+            });
+
+        });
+    </script>
+</body>
+</html>

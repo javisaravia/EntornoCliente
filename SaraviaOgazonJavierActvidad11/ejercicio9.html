@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Ejercicio 9</h1>
+
+    <form id="mi-formulario">
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+        
+        <br>
+        
+        <label>Correo electrónico</label><br>
+        <input type="email" id="email" placeholder="ejemplo@correo.com">
+        
+        <br>
+        
+        <button type="submit">Enviar datos</button>
+    </form>
+
+    <div id="notificacion"></div>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#mi-formulario').submit(function(evento) {
+                
+                evento.preventDefault();
+
+                var nombre = $('#nombre').val().trim();
+                var email = $('#email').val().trim();
+                var mensajeError = "";
+
+                if (nombre === "") {
+                    mensajeError = "⚠️ El campo Nombre es obligatorio.";
+                } 
+
+                else if (email === "" || !email.includes('@')) {
+                    mensajeError = "⚠️ Por favor, introduce un email válido.";
+                }
+
+                if (mensajeError !== "") {
+                    mostrarNotificacion(mensajeError, 'error');
+                } else {
+            
+                    mostrarNotificacion("¡Formulario enviado correctamente!", 'exito');
+
+                    $('#mi-formulario')[0].reset();
+                }
+            });
+            
+            function mostrarNotificacion(texto, tipo) {
+                var notif = $('#notificacion');
+   
+                notif.removeClass('error exito');
+                
+                notif.text(texto).addClass(tipo);
+
+                notif.fadeIn().delay(3000).fadeOut(); 
+            }
+
+        });
+    
+    </script>
+
+</body>
+</html>
